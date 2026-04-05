@@ -1,0 +1,622 @@
+/* ============================================
+   GLOBAL RESET & BASE STYLES
+   ============================================
+   The very first thing we do is "reset" the browser's
+   default styles. Why? Because every browser (Chrome,
+   Firefox, Safari) has its OWN built-in CSS that adds
+   random padding, margins, and font sizes.
+   We wipe those defaults so we start with a blank canvas.
+*/
+
+/* Add this to the very TOP of your style.css,
+   right after the * { } reset block */
+
+html {
+    scroll-behavior: smooth;
+    /* ☝️ That's it. Seriously. One property.
+       Now every anchor link (href="#about" etc.)
+       will SMOOTHLY scroll to the section instead of jumping.
+       This is one of those things that makes visitors think
+       "wow this feels polished" without knowing why. */
+}
+
+* {
+    /* ☝️ The * selector means "EVERY element on the page"
+       It's the most powerful selector — use it carefully. */
+    margin: 0;
+    /* Remove all default spacing OUTSIDE elements */
+    padding: 0;
+    /* Remove all default spacing INSIDE elements */
+    box-sizing: border-box;
+    /* This one is magic. By default, if you set a box to
+       be 200px wide and then add padding, it becomes
+       WIDER than 200px — very confusing!
+       box-sizing: border-box tells CSS:
+       "Keep the box exactly 200px wide. Fit the padding INSIDE." */
+}
+
+/* ============================================
+   BODY — The whole page background & font
+   ============================================ */
+
+body {
+    background-color: #0a0a0f;
+    /* ☝️ This is your dark background!
+       #0a0a0f is a "hex color" (hexadecimal).
+       Think of it like a color recipe:
+       # = "this is a hex color"
+       0a = how much RED (very little)
+       0a = how much GREEN (very little)
+       0f = how much BLUE (tiny bit more)
+       Result: an almost-black color with a faint blue tint.
+       Very popular in dark/techy designs. */
+
+    color: #e2e8f0;
+    /* ☝️ This sets the DEFAULT text color for the whole page.
+       Any text that doesn't have its own color rule
+       will inherit this — a soft, off-white.
+       Pure white (#ffffff) on pure black is too harsh on eyes. */
+
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* ☝️ This sets the font for the entire page.
+       We list multiple fonts separated by commas — this is called
+       a "font stack". The browser tries each one left to right
+       and uses the first one it finds installed on the device.
+       "sans-serif" at the end is a fallback that ALWAYS works. */
+
+    line-height: 1.6;
+    /* ☝️ This controls spacing between lines of text.
+       1.6 means each line is 1.6x the font size tall.
+       Without this, text feels cramped and hard to read.
+       Good readability standard for body text. */
+}
+
+/* ============================================
+   NAVIGATION BAR
+   ============================================ */
+
+nav {
+    display: flex;
+    /* ☝️ "flex" is a CSS layout system called Flexbox.
+       It's one of the most important CSS concepts.
+       By default, HTML stacks things top-to-bottom.
+       display: flex switches to left-to-right layout.
+       We'll use this a LOT. */
+
+    justify-content: space-between;
+    /* ☝️ Spread items to opposite ends — logo on left, links on right */
+
+    align-items: center;
+    /* ☝️ Vertically center everything inside the nav */
+
+    padding: 20px 60px;
+    /* ☝️ padding: top/bottom left/right
+       20px breathing room top and bottom
+       60px breathing room on left and right sides */
+
+    border-bottom: 1px solid #1e293b;
+    /* ☝️ A thin, subtle line under the nav.
+       #1e293b is a dark blue-grey — barely visible on dark bg.
+       This separates the nav from the page content gently. */
+
+    position: sticky;
+    /* ☝️ "sticky" means: scroll normally, but when you reach
+       the top of the screen, STICK there and stay visible.
+       This is how nav bars follow you as you scroll down! */
+
+    top: 0;
+    /* ☝️ Stick to 0px from the top of the screen */
+
+    background-color: #0a0a0f;
+    /* ☝️ Same as body background — so the nav doesn't look
+       transparent when content scrolls behind it. */
+
+    z-index: 100;
+    /* ☝️ z-index controls which element appears "on top"
+       when things overlap. Higher number = in front.
+       100 ensures the nav always appears above all page content. */
+}
+
+/* ============================================
+   SECTIONS — Shared spacing for all sections
+   ============================================ */
+
+section {
+    padding: 80px 60px;
+    /* ☝️ Every section gets generous breathing room:
+       80px top/bottom, 60px left/right.
+       This creates the "spacious, premium" feel
+       you see on professional portfolios. */
+
+    max-width: 1100px;
+    /* ☝️ Cap the content width at 1100px.
+       On wide monitors without this, your text would
+       stretch across the full 2000px screen — very hard to read.
+       This keeps content comfortable to read. */
+
+    margin: 0 auto;
+    /* ☝️ margin: 0 auto is the classic centering trick.
+       top/bottom = 0, left/right = "auto" (equal on both sides).
+       This centers the section horizontally on the page. */
+}
+
+/* ============================================
+   HEADINGS
+   ============================================ */
+
+h1 {
+    font-size: 56px;
+    /* ☝️ Big, bold hero heading */
+
+    font-weight: 700;
+    /* ☝️ 700 = Bold. (400 = normal, 700 = bold, 900 = extra bold) */
+
+    color: #ffffff;
+    /* Pure white for maximum contrast on the dark background */
+
+    margin-bottom: 16px;
+    /* Space below the h1 before the next element */
+}
+
+h2 {
+    font-size: 36px;
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 24px;
+}
+
+p {
+    font-size: 18px;
+    color: #94a3b8;
+    /* ☝️ A muted grey-blue for paragraph text.
+       Not pure white — that would fight with headings for attention.
+       Muted text = supporting role, headings = starring role. */
+
+    max-width: 600px;
+    /* ☝️ Long lines of text are tiring to read.
+       Capping at 600px keeps each line short enough
+       to read comfortably. This is called "line length" or "measure". */
+}
+
+/* ============================================
+   HERO SECTION — The big intro at the top
+   ============================================ */
+
+#hero {
+    /* ☝️ The # means we're targeting by ID.
+       #hero targets the element with id="hero" in your HTML.
+       This is more specific than just "section" —
+       these styles apply ONLY to the hero section. */
+
+    min-height: 90vh;
+    /* ☝️ vh = "viewport height" = the height of the browser window.
+       90vh = 90% of the window height.
+       This makes the hero section nearly full-screen tall,
+       giving it that dramatic, impactful look. */
+
+    display: flex;
+    flex-direction: column;
+    /* ☝️ Stack children top-to-bottom inside the hero */
+
+    justify-content: center;
+    /* ☝️ Vertically center the text in the section */
+}
+
+/* ============================================
+   NAVIGATION STYLES
+   ============================================ */
+
+.nav-logo {
+    /* ☝️ The dot before a name means "class selector"
+       This targets any element with class="nav-logo" */
+    font-size: 20px;
+    font-weight: 700;
+    color: #a78bfa;
+    /* ☝️ #a78bfa is a soft purple — your accent color.
+       This will become your signature color throughout the site. */
+    letter-spacing: 1px;
+    /* ☝️ Adds tiny gaps between each letter.
+       Gives a slightly techy, spaced-out feel. */
+}
+
+.nav-links {
+    display: flex;
+    /* ☝️ Makes the list items sit side by side, not stacked */
+    gap: 40px;
+    /* ☝️ Space between each nav link */
+    list-style: none;
+    /* ☝️ By default, <ul> adds bullet points. This removes them. */
+}
+
+.nav-links a {
+    /* ☝️ This targets <a> tags that are INSIDE .nav-links
+       Called a "descendant selector" — very powerful. */
+    color: #94a3b8;
+    text-decoration: none;
+    /* ☝️ By default, links have an underline. This removes it. */
+    font-size: 15px;
+    transition: color 0.3s ease;
+    /* ☝️ "transition" = smooth animation when something changes.
+       When the color changes (on hover), it takes 0.3 seconds.
+       Without this, color changes are instant and jarring. */
+}
+
+.nav-links a:hover {
+    /* ☝️ The :hover "pseudo-class" means:
+       "Apply these styles ONLY when the mouse is over it."
+       This is how you create interactive hover effects! */
+    color: #a78bfa;
+    /* Turns purple when hovered */
+}
+
+/* ============================================
+   HERO SECTION STYLES
+   ============================================ */
+
+.hero-tag {
+    display: inline-block;
+    /* ☝️ Makes the div only as wide as its content,
+       not stretch full width like a block element */
+    background: rgba(167, 139, 250, 0.1);
+    /* ☝️ rgba() = red, green, blue, ALPHA (opacity).
+       The 0.1 means 10% opacity — very transparent.
+       Result: a faint purple glow behind the text. */
+    color: #a78bfa;
+    border: 1px solid rgba(167, 139, 250, 0.25);
+    border-radius: 20px;
+    /* ☝️ High border-radius = pill shape */
+    padding: 6px 16px;
+    font-size: 14px;
+    margin-bottom: 24px;
+}
+
+.accent {
+    color: #a78bfa;
+    /* ☝️ This is what makes "Your Name" glow purple in the h1.
+       We wrapped the name in <span class="accent"> in HTML,
+       and here we give that span a purple color. */
+}
+
+.hero-role {
+    color: #38bdf8;
+    /* ☝️ A bright sky blue — creates contrast with the purple accent.
+       Two-color accent systems (purple + blue) look very professional. */
+    font-size: 28px;
+    font-weight: 500;
+    margin-bottom: 20px;
+    /* Override the default h2 color we set earlier */
+}
+
+.hero-desc {
+    color: #64748b;
+    /* ☝️ Muted grey — supporting text, not competing with the heading */
+    font-size: 18px;
+    margin-bottom: 40px;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
+
+.hero-buttons {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 60px;
+}
+
+.btn-primary {
+    background: #7c3aed;
+    /* ☝️ Solid purple background — this is the main action button */
+    color: #ffffff;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+    /* ☝️ We're transitioning TWO properties at once.
+       Background color AND transform (for a scale effect on hover). */
+}
+
+.btn-primary:hover {
+    background: #6d28d9;
+    /* ☝️ Slightly darker purple on hover */
+    transform: translateY(-2px);
+    /* ☝️ Moves the button 2px upward on hover.
+       Combined with the color change, this creates a subtle
+       "lifting" effect — makes buttons feel alive and clickable. */
+}
+
+.btn-secondary {
+    background: transparent;
+    color: #a78bfa;
+    padding: 14px 28px;
+    border-radius: 8px;
+    border: 1px solid rgba(167, 139, 250, 0.4);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background: rgba(167, 139, 250, 0.1);
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   HERO STATS (the 3 numbers at the bottom)
+   ============================================ */
+
+.hero-stats {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+    /* ☝️ Stack number on top, label below */
+    gap: 4px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #475569;
+    text-transform: uppercase;
+    /* ☝️ Makes text ALL CAPS without changing your HTML */
+    letter-spacing: 1px;
+}
+
+.stat-divider {
+    width: 1px;
+    height: 40px;
+    background: #1e293b;
+    /* ☝️ A thin vertical line separating the stats */
+}
+
+/* ============================================
+   SECTION HEADER (shared heading style)
+   ============================================ */
+
+.section-header {
+    margin-bottom: 48px;
+}
+
+.section-sub {
+    color: #475569;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+/* ============================================
+   PROJECTS GRID
+   ============================================ */
+
+.projects-grid {
+    display: grid;
+    /* ☝️ Switching on CSS Grid for this container */
+
+    grid-template-columns: repeat(2, 1fr);
+    /* ☝️ This is the magic line. Breaking it down:
+         repeat(2, ...) = "make 2 columns"
+         1fr = "each column gets 1 fraction of available space"
+         So both columns share the width equally — 50% each.
+         If you changed it to repeat(3, 1fr) you'd get 3 columns. */
+
+    gap: 24px;
+    /* ☝️ Space between every card — both horizontally and vertically */
+}
+
+/* ============================================
+   PROJECT CARD
+   ============================================ */
+
+.project-card {
+    background: #0f0f1a;
+    /* ☝️ Slightly lighter than the page background —
+         this contrast is what makes cards "pop" off the page */
+
+    border: 1px solid #1e293b;
+    /* ☝️ A subtle dark border. You can barely see it —
+         but remove it and the card feels formless. */
+
+    border-radius: 12px;
+    padding: 28px;
+
+    transition: border-color 0.3s ease, transform 0.3s ease;
+    /* ☝️ We'll animate these two properties on hover:
+         1. border-color — the border will glow purple
+         2. transform — the card will lift slightly upward */
+}
+
+.project-card:hover {
+    border-color: rgba(167, 139, 250, 0.5);
+    /* ☝️ On hover, border becomes a soft purple glow */
+    transform: translateY(-4px);
+    /* ☝️ Card lifts 4px upward — creates a floating effect.
+         Combined with the border glow, cards feel interactive
+         and alive. This small detail impresses recruiters. */
+}
+
+/* ============================================
+   CARD INNER ELEMENTS
+   ============================================ */
+
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.card-icon {
+    font-size: 28px;
+}
+
+.card-links {
+    display: flex;
+    gap: 8px;
+}
+
+.card-link {
+    color: #475569;
+    text-decoration: none;
+    font-size: 13px;
+    background: #1e293b;
+    padding: 4px 12px;
+    border-radius: 6px;
+    transition: color 0.3s ease, background 0.3s ease;
+}
+
+.card-link:hover {
+    color: #a78bfa;
+    background: rgba(167, 139, 250, 0.1);
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 10px;
+}
+
+.card-desc {
+    color: #475569;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    max-width: 100%;
+    /* ☝️ Override the 600px max-width we set on ALL p tags earlier.
+         Inside cards, paragraphs should fill the card width. */
+}
+
+/* ============================================
+   TECH TAGS (the purple pills)
+   ============================================ */
+
+.card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    /* ☝️ flex-wrap: wrap means if tags don't fit in one row,
+         they automatically wrap to the next line.
+         Without this, they'd overflow outside the card. */
+}
+
+.tag {
+    font-size: 12px;
+    color: #a78bfa;
+    background: rgba(167, 139, 250, 0.1);
+    border: 1px solid rgba(167, 139, 250, 0.2);
+    padding: 4px 12px;
+    border-radius: 20px;
+    /* ☝️ High border-radius = pill shape.
+         These little pills are visually iconic in dev portfolios —
+         they say "I know these technologies" at a glance. */
+}
+
+/* ============================================
+   RESUME SECTION
+   ============================================ */
+
+.resume-card {
+    background: #0f0f1a;
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 48px;
+    display: flex;
+    /* ☝️ Flexbox again — puts left content and
+       right button side by side */
+    justify-content: space-between;
+    /* ☝️ Pushes left side to the left edge,
+       right side to the right edge */
+    align-items: center;
+    /* ☝️ Vertically centers both sides */
+    gap: 40px;
+}
+
+.resume-left {
+    max-width: 560px;
+}
+
+.resume-tag {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.1);
+    color: #38bdf8;
+    /* ☝️ Sky blue this time — a variation from the purple.
+       Two accent colors used intentionally:
+       Purple = actions/highlights, Blue = status/info */
+    border: 1px solid rgba(56, 189, 248, 0.2);
+    border-radius: 20px;
+    padding: 6px 16px;
+    font-size: 13px;
+    margin-bottom: 20px;
+}
+
+.resume-desc {
+    color: #64748b;
+    font-size: 16px;
+    line-height: 1.7;
+    margin-bottom: 28px;
+    max-width: 100%;
+}
+
+.skill-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skill-pill {
+    font-size: 13px;
+    color: #64748b;
+    background: #1e293b;
+    padding: 6px 14px;
+    border-radius: 8px;
+    /* ☝️ These are grey — intentionally different from the
+       purple project tags. Grey = neutral skills list.
+       Purple = tech stack on specific projects.
+       Small color decisions like this create visual hierarchy. */
+}
+
+.resume-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    /* ☝️ flex-shrink: 0 means this side won't compress
+       even if the screen gets narrow. The button always
+       stays its full size. */
+}
+
+.resume-note {
+    font-size: 13px;
+    color: #334155;
+    max-width: 100%;
+}
+
+/* ============================================
+   FOOTER
+   ============================================ */
+
+footer {
+    text-align: center;
+    padding: 40px 60px;
+    border-top: 1px solid #1e293b;
+    /* ☝️ Thin line separating footer from the last section */
+}
+
+.footer-text {
+    color: #334155;
+    font-size: 14px;
+    max-width: 100%;
+}

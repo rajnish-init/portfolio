@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<!-- ☝️ This is NOT a tag. It's a declaration.
+     It tells the browser: "Hey, this file is modern HTML (version 5)."
+     Without this, older browsers might display your page incorrectly.
+     Always the very first line. Always. -->
+
+<html lang="en">
+<!-- ☝️ This is the ROOT tag — it wraps your ENTIRE webpage.
+     Everything on your site lives inside here.
+     lang="en" tells browsers (and Google) that this page is in English.
+     This matters for accessibility tools like screen readers. -->
+
+  <head>
+  <!-- ☝️ The HEAD is like the "behind the scenes" section.
+       Visitors to your website NEVER see what's in here directly.
+       But it contains vital instructions FOR the browser:
+       - What title to show in the browser tab
+       - How to display the page on mobile screens
+       - Which CSS file to load for styling
+       - Which JavaScript file to load for interactivity -->
+
+    <meta charset="UTF-8">
+    <!-- ☝️ "charset" = character set.
+         UTF-8 means your page can display ANY character on earth —
+         English, Hindi, Arabic, emoji, you name it.
+         Without this, special characters might show up as weird symbols. -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- ☝️ This one line makes your site work on mobile phones.
+         "viewport" = the visible area of the screen.
+         Without this, mobile browsers would zoom out and show a tiny
+         desktop version. With it, the page fits the phone's screen width.
+         Every modern website has this. -->
+
+    <title>Rajnish Anand — Portfolio</title>
+    <!-- ☝️ This text appears in:
+         1. The browser tab at the top
+         2. Google search results as the page title
+         3. When someone bookmarks your site
+         Change "Your Name" to your actual name later! -->
+
+    <link rel="stylesheet" href="css/style.css">
+    <!-- ☝️ This connects your HTML file to your CSS file.
+         "rel" = relationship (this linked file is a stylesheet).
+         "href" = the path/location of the CSS file.
+         Think of it like plugging in a lamp — without this line,
+         your CSS file exists but has NO effect on your page. -->
+
+  </head>
+
+  <body>
+  <!-- ☝️ The BODY is everything visitors actually SEE on your website.
+       Every heading, paragraph, image, button, section —
+       all of it lives inside the <body> tag. -->
+
+    <!-- NAVIGATION BAR -->
+    <!-- NAVIGATION BAR -->
+<nav>
+    <div class="nav-logo">YN.dev</div>
+    <!-- ☝️ Your logo/brand name. Change "YN" to your initials.
+         This is just a div (a generic container) with a class on it.
+         "class" is like a label — CSS can find it using that label. -->
+
+    <ul class="nav-links">
+        <!-- ☝️ <ul> = unordered list. Nav links are technically a list
+             of options. Using <ul> is the "semantic" correct way.
+             class="nav-links" lets us style this list in CSS. -->
+
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#resume">Resume</a></li>
+        <!-- ☝️ <li> = list item. Each link is one item.
+             href="#about" means "jump to the element with id='about'
+             on THIS page" — that's why we added those IDs to sections!
+             The # means "same page anchor link". -->
+    </ul>
+</nav>
+
+    <!-- HERO SECTION -->
+<section id="hero">
+    <div class="hero-tag">👋 Open to internships</div>
+    <!-- ☝️ A small pill/badge at the top. We'll style this to glow. -->
+
+    <h1>Hi, I'm <span class="accent">Your Name</span></h1>
+    <!-- ☝️ Notice the <span> inside the <h1>.
+         <span> is an INLINE container — it wraps text without
+         breaking to a new line. We can color just that word
+         differently using the class "accent". -->
+
+    <h2 class="hero-role">Student Developer</h2>
+    <!-- ☝️ Your title/role. Change to whatever fits you. -->
+
+    <p class="hero-desc">
+        Passionate about building things that live on the internet.
+        Currently learning, always creating.
+    </p>
+    <!-- ☝️ Write 1-2 sentences about yourself here. Keep it punchy! -->
+
+    <div class="hero-buttons">
+        <a href="#projects" class="btn-primary">View Projects</a>
+        <a href="assets/resume.pdf" download class="btn-secondary">
+            Download Resume
+        </a>
+    </div>
+    <!-- ☝️ Two buttons side by side.
+         btn-primary = the bold, filled button
+         btn-secondary = the outlined, subtle button
+         We'll style both in CSS. -->
+
+    <div class="hero-stats">
+        <div class="stat">
+            <span class="stat-number">5+</span>
+            <span class="stat-label">Projects</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+            <span class="stat-number">3</span>
+            <span class="stat-label">Technologies</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+            <span class="stat-number">∞</span>
+            <span class="stat-label">Curiosity</span>
+        </div>
+    </div>
+    <!-- ☝️ Three small stats at the bottom of the hero.
+         Update the numbers to reflect your actual experience.
+         Even as a beginner, 1 project is honest and real! -->
+</section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about">
+      <h2>About Me</h2>
+      <!-- ☝️ <h2> = Heading level 2. Smaller than h1.
+           Think chapters in a book. -->
+      <p>Tell your story here. Who are you? What do you care about?</p>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <!-- PROJECTS SECTION -->
+<section id="projects">
+
+    <div class="section-header">
+        <h2>My Projects</h2>
+        <p class="section-sub">Things I've built while learning to code</p>
+    </div>
+    <!-- ☝️ A small wrapper around the heading and subtitle.
+         Lets us style them together as a group. -->
+
+    <div class="projects-grid">
+        <!-- ☝️ This is the container for all cards.
+             We'll use CSS Grid to arrange cards side by side.
+             CSS Grid = the best tool for 2D layouts (rows AND columns).
+             Think of it like a table, but way more powerful. -->
+
+        <!-- PROJECT CARD 1 -->
+        <div class="project-card">
+            <!-- ☝️ Each card is a <div> with class="project-card"
+                 div = "division" — a generic container with no meaning.
+                 It's the most used HTML tag. We give it meaning
+                 through class names and CSS. -->
+
+            <div class="card-header">
+                <span class="card-icon">🌐</span>
+                <div class="card-links">
+                    <a href="#" class="card-link">GitHub</a>
+                    <a href="#" class="card-link">Live</a>
+                    <!-- ☝️ Replace # with your actual GitHub link later -->
+                </div>
+            </div>
+
+            <h3 class="card-title">Portfolio Website</h3>
+            <!-- ☝️ h3 = heading level 3. Smaller than h2.
+                 Perfect for card titles inside a section. -->
+
+            <p class="card-desc">
+                A personal portfolio built from scratch.
+                Zero frameworks — pure HTML, CSS and JavaScript.
+            </p>
+
+            <div class="card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <!-- ☝️ <span> = inline container, like <div> but inline.
+                     Each tag is its own span — we'll style them
+                     as little purple pills in CSS. -->
+            </div>
+        </div>
+
+        <!-- PROJECT CARD 2 -->
+        <div class="project-card">
+            <div class="card-header">
+                <span class="card-icon">📝</span>
+                <div class="card-links">
+                    <a href="#" class="card-link">GitHub</a>
+                    <a href="#" class="card-link">Live</a>
+                </div>
+            </div>
+            <h3 class="card-title">Cloud Computing</h3>
+            <p class="card-desc">
+                Describe what it does and what you learned
+                from building it. Keep it to 2 sentences.
+            </p>
+            <div class="card-tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+            </div>
+        </div>
+
+        <!-- PROJECT CARD 3 -->
+        <div class="project-card">
+            <div class="card-header">
+                <span class="card-icon">✨</span>
+                <div class="card-links">
+                    <a href="#" class="card-link">GitHub</a>
+                    <a href="#" class="card-link">Live</a>
+                </div>
+            </div>
+            <h3 class="card-title">Your Third Project</h3>
+            <p class="card-desc">
+                Even a small project counts. Every recruiter
+                was once a beginner too.
+            </p>
+            <div class="card-tags">
+                <span class="tag">JavaScript</span>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+    <!-- RESUME SECTION -->
+<section id="resume">
+
+    <div class="section-header">
+        <h2>My Resume</h2>
+        <p class="section-sub">My background, skills and experience</p>
+    </div>
+
+    <div class="resume-card">
+        <!-- ☝️ One big card — left side has info, right side has button.
+             We'll use flexbox to put them side by side. -->
+
+        <div class="resume-left">
+
+            <div class="resume-tag">📄 Available for opportunities</div>
+
+            <p class="resume-desc">
+                Computer Science student seeking internships in
+                software development and DevOps. Passionate about
+                building reliable, scalable systems.
+                <!-- ☝️ Edit this to match YOUR background -->
+            </p>
+
+            <div class="skill-list">
+                <!-- ☝️ List your actual skills here.
+                     These act as keywords recruiters scan for. -->
+                <span class="skill-pill">Python</span>
+                <span class="skill-pill">Linux</span>
+                <span class="skill-pill">Docker</span>
+                <span class="skill-pill">Git</span>
+                <span class="skill-pill">HTML/CSS</span>
+            </div>
+
+        </div>
+
+        <div class="resume-right">
+            <a href="assets/resume.pdf" download class="btn-primary">
+                ⬇ Download Resume
+            </a>
+            <!-- ☝️ Remember: the "download" attribute forces the browser
+                 to download the file instead of opening it.
+                 Make sure your actual PDF is in the assets/ folder! -->
+            <p class="resume-note">PDF · Updated 2025</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <!-- ☝️ <footer> is a semantic tag — it means "bottom of the page"
+         Good for copyright, social links, quick nav. -->
+    <p class="footer-text">
+        Built with HTML, CSS & JavaScript · 
+        <span class="accent">Your Name</span> © 2025
+    </p>
+</footer>
+
+    <script src="js/main.js"></script>
+    <!-- ☝️ This connects your JavaScript file.
+         Notice it's at the BOTTOM of the body, not in the head.
+         Why? Because JavaScript runs line by line.
+         If it loaded first, it might try to find HTML elements
+         that haven't been created yet — and crash.
+         Loading it last = all the HTML exists before JS touches it. -->
+
+  </body>
+
+</html>
+<!-- ☝️ Every opening tag needs a closing tag.
+     This closes the <html> tag we opened at the very top.
+     Nothing should come after this line. -->
